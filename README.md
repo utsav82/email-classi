@@ -1,20 +1,20 @@
 # Email Classifier Web Application
 
-This project is a web application that allows users to log in using Google OAuth, fetch their last X emails from Gmail, and classify them into different categories using OpenAI's GPT model. The application is built using Next.js for the frontend and backend API routes.
+This project is a web application that allows users to log in using Google OAuth, fetch their last X emails from Gmail, and classify them into different categories using Gemini's GPT model. The application is built using Next.js for the frontend and backend API routes.
 
 ## Features
 
 - **User Authentication**: Users can log in using Google OAuth.
 - **Fetch Emails**: Fetch the user's emails from Gmail using the Gmail API.
-- **Classify Emails**: Use OpenAI GPT-4 to classify emails into important, promotional, social, marketing, spam, or general categories.
-- **User Interface**: Simple UI to enter OpenAI API key and number of emails to fetch, and to display classified emails.
+- **Classify Emails**: Use Gemini to classify emails into important, promotional, social, marketing, spam, or general categories.
+- **User Interface**: Simple UI to enter Gemini API key and number of emails to fetch, and to display classified emails.
 
 ## Technologies Used
 
 - **Frontend**: Next.js, Tailwind CSS, React
 - **Backend**: Next.js API Routes
 - **Authentication**: Google OAuth 2.0
-- **APIs**: Gmail API, OpenAI API
+- **APIs**: Gmail API, Gemini API
 
 ## Setup and Installation
 
@@ -22,7 +22,7 @@ This project is a web application that allows users to log in using Google OAuth
 
 - Node.js (>= 12.x)
 - Google Cloud project with OAuth 2.0 credentials
-- OpenAI API key
+- Gemini API key
 
 ### Installation
 
@@ -69,9 +69,9 @@ This project is a web application that allows users to log in using Google OAuth
 
 ### Fetch and Classify Emails
 
-1. **Enter OpenAI API Key**:
+1. **Enter Gemini API Key**:
 
-    After logging in, enter your OpenAI API key in the input box provided and click "Set API Key".
+    After logging in, enter your Gemini API key in the input box provided and click "Set API Key".
 
 2. **Fetch Emails**:
 
@@ -79,19 +79,19 @@ This project is a web application that allows users to log in using Google OAuth
 
 3. **Classify Emails**:
 
-    Click the "Classify Emails" button to classify the fetched emails into the predefined categories using OpenAI's GPT-4.
+    Click the "Classify Emails" button to classify the fetched emails into the predefined categories using Gemini's GPT-4.
 
 ## API Endpoints
 
 ### Classify Emails
 
-- **Endpoint**: `/api/openai`
+- **Endpoint**: `/api/gemini`
 - **Method**: POST
 - **Request Body**:
 
     ```json
     {
-      "apiKey": "your-openai-api-key",
+      "apiKey": "your-gemini-api-key",
       "emails": [
         {
           "id": "1",
@@ -130,7 +130,7 @@ Handles user authentication with Google OAuth.
 
 ### Email Fetch and Classify Component
 
-Handles fetching emails from Gmail and classifying them using OpenAI API.
+Handles fetching emails from Gmail and classifying them using Gemini API.
 
 ### API Routes
 
@@ -140,4 +140,4 @@ Fetches emails from Gmail API.
 
 #### Classify Emails
 
-Classifies emails using OpenAI API.
+Classifies emails using Gemini API.

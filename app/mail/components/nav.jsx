@@ -34,7 +34,7 @@ export function Nav({ session, setLoading, setMail, setEmails,emails }) {
     try {
       setLoading(true);
       setMail(null);
-      const response = await fetch('/api/openai', {
+      const response = await fetch('/api/gemini', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -51,7 +51,7 @@ export function Nav({ session, setLoading, setMail, setEmails,emails }) {
 
     } catch (error) {
       console.error('Error:', error);
-      toast.error('Failed to classify emails');
+      toast.error('Failed to classify emails, api may fail some times please retry');
     }
     finally {
       setLoading(false);
@@ -86,7 +86,7 @@ export function Nav({ session, setLoading, setMail, setEmails,emails }) {
 
           <Input
             type="text"
-            placeholder="Enter OpenAI API Key"
+            placeholder="Enter Google Gemini API Key"
             value={apiKey}
             onChange={handleApiKeyChange}
           />
@@ -94,10 +94,6 @@ export function Nav({ session, setLoading, setMail, setEmails,emails }) {
           <Button onClick={classifyEmails} variant="outline">
             Classify Emails
           </Button>
-
-
-
-
         </>
       ) : (
         <p className="text-center text-gray-500">Loading...</p>

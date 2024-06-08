@@ -7,6 +7,7 @@ import {
   AvatarImage,
 } from "./ui/avatar"
 import { Separator } from "./ui/separator"
+import { Badge } from "./ui/badge"
 export function MailDisplay({ mail }) {
 
   return (
@@ -38,6 +39,16 @@ export function MailDisplay({ mail }) {
                 {format(new Date(mail.date), "PPpp")}
               </div>
             )}
+            {mail.labels.length ? (
+              <div className="flex items-center gap-2 ml-10">
+                {mail.labels.map((label) => (
+                  <Badge key={label}>
+                    {label}
+                  </Badge>
+                ))}
+              </div>
+            ) : null}
+
           </div>
           <Separator />
           <div className="flex-1 whitespace-pre-wrap p-4 text-sm">
