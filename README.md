@@ -1,36 +1,143 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Email Classifier Web Application
 
-## Getting Started
+This project is a web application that allows users to log in using Google OAuth, fetch their last X emails from Gmail, and classify them into different categories using OpenAI's GPT model. The application is built using Next.js for the frontend and backend API routes.
 
-First, run the development server:
+## Features
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+- **User Authentication**: Users can log in using Google OAuth.
+- **Fetch Emails**: Fetch the user's emails from Gmail using the Gmail API.
+- **Classify Emails**: Use OpenAI GPT-4 to classify emails into important, promotional, social, marketing, spam, or general categories.
+- **User Interface**: Simple UI to enter OpenAI API key and number of emails to fetch, and to display classified emails.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Technologies Used
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+- **Frontend**: Next.js, Tailwind CSS, React
+- **Backend**: Next.js API Routes
+- **Authentication**: Google OAuth 2.0
+- **APIs**: Gmail API, OpenAI API
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+## Setup and Installation
 
-## Learn More
+### Prerequisites
 
-To learn more about Next.js, take a look at the following resources:
+- Node.js (>= 12.x)
+- Google Cloud project with OAuth 2.0 credentials
+- OpenAI API key
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+### Installation
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+1. **Clone the repository**:
 
-## Deploy on Vercel
+    ```sh
+    git clone https://github.com/utsav82/email-classi.git
+    cd email-classi
+    ```
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+2. **Install dependencies**:
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+    ```sh
+    npm install
+    ```
+
+3. **Configure environment variables**:
+
+    Create a `.env` file in the root directory with the following content:
+
+    ```env
+    GOOGLE_CLIENT_ID=your-google-client-id
+    GOOGLE_CLIENT_SECRET=your-google-client-secret
+    NEXTAUTH_SECRET=your-next-auth-secret
+    ```
+
+    Replace `your-google-client-id`, `your-google-client-secret`, and `your-next-auth-secret` with your actual credentials.
+
+4. **Run the development server**:
+
+    ```sh
+    npm run dev
+    ```
+
+    Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+
+## Usage
+
+### User Authentication
+
+1. **Login with Google**:
+
+    On the login page, click the "Login With Google" button to authenticate with your Google account.
+
+### Fetch and Classify Emails
+
+1. **Enter OpenAI API Key**:
+
+    After logging in, enter your OpenAI API key in the input box provided and click "Set API Key".
+
+2. **Fetch Emails**:
+
+    Enter the number of emails to fetch in the input box and click "Fetch Emails".
+
+3. **Classify Emails**:
+
+    Click the "Classify Emails" button to classify the fetched emails into the predefined categories using OpenAI's GPT-4.
+
+## API Endpoints
+
+### Classify Emails
+
+- **Endpoint**: `/api/openai`
+- **Method**: POST
+- **Request Body**:
+
+    ```json
+    {
+      "apiKey": "your-openai-api-key",
+      "emails": [
+        {
+          "id": "1",
+          "name": "John Doe",
+          "email": "johndoe@example.com",
+          "subject": "Meeting Tomorrow",
+          "text": "Hi, let's have a meeting tomorrow to discuss the project.",
+          "labels": []
+        },
+        ...
+      ]
+    }
+    ```
+
+- **Response**:
+
+    ```json
+    [
+      {
+        "id": "1",
+        "name": "John Doe",
+        "email": "johndoe@example.com",
+        "subject": "Meeting Tomorrow",
+        "text": "Hi, let's have a meeting tomorrow to discuss the project.",
+        "labels": ["important"]
+      },
+      ...
+    ]
+    ```
+
+## Components
+
+### Login Page
+
+Handles user authentication with Google OAuth.
+
+### Email Fetch and Classify Component
+
+Handles fetching emails from Gmail and classifying them using OpenAI API.
+
+### API Routes
+
+#### Fetch Emails
+
+Fetches emails from Gmail API.
+
+#### Classify Emails
+
+Classifies emails using OpenAI API.
