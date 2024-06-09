@@ -1,6 +1,6 @@
 # Email Classifier Web Application
 
-This project is a web application that allows users to log in using Google OAuth, fetch their last X emails from Gmail, and classify them into different categories using Gemini's GPT model. The application is built using Next.js for the frontend and backend API routes.
+This project is a web application that allows users to log in using Google OAuth, fetch their last X emails from Gmail, and classify them into different categories using Gemini model. The application is built using Next.js for the frontend and backend API routes.
 
 ## Features
 
@@ -79,7 +79,7 @@ This project is a web application that allows users to log in using Google OAuth
 
 3. **Classify Emails**:
 
-    Click the "Classify Emails" button to classify the fetched emails into the predefined categories using Gemini's GPT-4.
+    Click the "Classify Emails" button to classify the fetched emails into the predefined categories using Gemini.
 
 ## API Endpoints
 
