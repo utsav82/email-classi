@@ -29,12 +29,38 @@ export async function POST(req) {
           return header ? header.value : "";
         };
 
+        const getEmailBody = (message) => {
+          let encodedBody = "";
+          if (!message.payload.parts) {
+            encodedBody = message.payload.body.data;
+          } else {
+            encodedBody = getHTMLPart(message.payload.parts);
+          }
+          return Buffer.from(encodedBody, "base64").toString("utf-8");
+        };
+
+        const getHTMLPart = (arr) => {
+          for (let x = 0; x <= arr.length; x++) {
+            if (typeof arr[x].parts === "undefined") {
+              if (arr[x].mimeType === "text/html") {
+                return arr[x].body.data;
+              }
+            } else {
+              return getHTMLPart(arr[x].parts);
+            }
+          }
+          return "";
+        };
+
+        const emailBody = getEmailBody(emailData);
+
         return {
           id: emailData.id,
-          name: getHeader("From").split(" ")[0].replace(/"/g, ""), 
-          email: getHeader("From").split(" ").pop().replace(/<|>/g, ""), 
+          name: getHeader("From").split(" ")[0].replace(/"/g, ""),
+          email: getHeader("From").split(" ").pop().replace(/<|>/g, ""),
           subject: getHeader("Subject"),
-          text: emailData.snippet,
+          text: emailBody,
+          snippet: emailData.snippet,
           date: new Date(parseInt(emailData.internalDate)).toISOString(),
           labels: [],
         };

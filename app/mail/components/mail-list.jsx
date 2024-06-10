@@ -4,6 +4,14 @@ import { Badge } from "./ui/badge"
 import { ScrollArea } from "./ui/scroll-area"
 
 export function MailList({ items, setMail }) {
+  console.log(items)
+  if (items.length === 0) {
+    return (
+      <div className="flex flex-col items-center justify-center h-screen">
+        <div className="text-2xl font-semibold text-muted-foreground">No Emails Found</div>
+      </div>
+    )
+  }
 
   return (
     <ScrollArea className="h-screen">
@@ -32,7 +40,7 @@ export function MailList({ items, setMail }) {
               <div className="text-xs font-medium">{item.subject}</div>
             </div>
             <div className="line-clamp-2 text-xs text-muted-foreground">
-              {item.text.substring(0, 300)}
+              {item.snippet.substring(0, 300)}
             </div>
             {item.labels.length ? (
               <div className="flex items-center gap-2">

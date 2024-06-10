@@ -51,16 +51,17 @@ export function MailDisplay({ mail }) {
 
           </div>
           <Separator />
-          <div className="flex-1 whitespace-pre-wrap p-4 text-sm">
-            {mail.text}
+          <div className="flex-1" dangerouslySetInnerHTML={{__html: mail.text}}>
+
           </div>
           <Separator className="mt-auto" />
         </div>
-      ) : (
-        <div className="p-8 text-center text-muted-foreground">
-          No message selected
-        </div>
-      )}
+  ) : (
+    <div className="p-8 text-center text-muted-foreground">
+      No message selected
     </div>
+  )
+}
+    </div >
   )
 }

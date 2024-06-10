@@ -44,9 +44,13 @@ export default function MailPage() {
         },
         body: JSON.stringify({ accessToken: session.data.accessToken, limit: limit }),
       })
-        .then((response) => response.json())
-        .then((emails) => {
-          setEmails(emails)
+        .then(async (emails) => {
+          if (emails.status === 500) {
+            toast.error("Error fetching emails logging out");
+            signOut();
+            throw new Error("Error fetching emails");
+          }
+          setEmails(await emails.json())
           setLoading(false);
         })
         .catch((error) => console.error('Error fetching emails:', error));
