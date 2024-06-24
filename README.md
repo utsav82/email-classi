@@ -104,7 +104,6 @@ This project is a web application that allows users to log in using Google OAuth
           "text": "Hi, let's have a meeting tomorrow to discuss the project.",
           "labels": []
         },
-        ...
       ]
     }
     ```
@@ -121,7 +120,6 @@ This project is a web application that allows users to log in using Google OAuth
         "text": "Hi, let's have a meeting tomorrow to discuss the project.",
         "labels": ["important"]
       },
-      ...
     ]
     ```
 
