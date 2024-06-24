@@ -2,6 +2,9 @@
 
 This project is a web application that allows users to log in using Google OAuth, fetch their last X emails from Gmail, and classify them into different categories using Gemini model. The application is built using Next.js for the frontend and backend API routes.
 
+![image](https://github.com/utsav82/email-classi/assets/92868052/a36062af-6d91-431e-b59d-7ca55f9bef76)
+
+
 ## Features
 
 - **User Authentication**: Users can log in using Google OAuth.
